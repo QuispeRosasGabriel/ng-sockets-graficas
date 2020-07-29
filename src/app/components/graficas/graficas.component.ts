@@ -9,21 +9,23 @@ import { Label } from 'ng2-charts';
 })
 export class GraficasComponent implements OnInit {
   public lineChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Ventas' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
+    { data: [0, 0, 0, 0], label: 'Ventas' },
   ];
 
-  public lineChartLabels: Label[] = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-  ];
+  public lineChartLabels: Label[] = ['January', 'February', 'March', 'April'];
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    setInterval(() => {
+      const newData = [
+        Math.round(Math.random() * 100),
+        Math.round(Math.random() * 100),
+        Math.round(Math.random() * 100),
+        Math.round(Math.random() * 100),
+      ];
+
+      this.lineChartData = [{ data: [...newData], label: 'Ventas' }];
+    }, 3000);
+  }
 }
