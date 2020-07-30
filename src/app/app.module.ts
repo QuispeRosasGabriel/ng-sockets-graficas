@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
@@ -10,7 +10,12 @@ const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
 
 @NgModule({
   declarations: [AppComponent, GraficasComponent],
-  imports: [BrowserModule, SocketIoModule.forRoot(config), ChartsModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    SocketIoModule.forRoot(config),
+    ChartsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
